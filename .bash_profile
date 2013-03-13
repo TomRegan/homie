@@ -82,6 +82,7 @@ CONFIG_DIR=~/Development/config
 [ -f ${CONFIG_DIR}/.git-prompt ] && source ${CONFIG_DIR}/.git-prompt
 [ -f ${CONFIG_DIR}/.p4settings ] && source ${CONFIG_DIR}/.p4settings
 [ -f ${CONFIG_DIR}/.pass-settings ] && source ${CONFIG_DIR}/.pass-settings
+[ -f ${CONFIG_DIR}/.ssh-settings ] && source ${CONFIG_DIR}/.ssh-settings
 
 # History
 # 2012-07-09 : added git branch to PS1
