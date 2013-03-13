@@ -1,0 +1,6 @@
+.DS_store
+.vim/view/
+.netrwhist
+tags/
+*.pyc
+*.swp

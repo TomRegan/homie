@@ -1,0 +1,19 @@
+[user]
+	name = Tom Regan
+	email = code.tom.regan@gmail.com
+[core]
+    editor = /usr/bin/vim
+	excludesfile = /Users/tom/.gitignore_global
+[alias]
+    br = branch
+    co = checkout
+    ci = commit
+    df = diff --color
+    ll = log --oneline --graph
+    st = status
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
