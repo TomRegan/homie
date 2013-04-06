@@ -25,6 +25,8 @@ set encoding=utf-8               "defualt encoding
 set filetype=on                  "detect filetype
 set ruler                        "display the cursor position
 set virtualedit=all              "allow cursor to roam in command mode
+set ttyfast                      "send more characters for quicker drawing
+set paste                        "enable pasting without skew
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " set mouse=a                      "mouse support
 "
@@ -88,7 +90,7 @@ set incsearch                    "incremental search
 set hlsearch                     "highlight all search matches
 set ignorecase                   "ignore case in search
 set smartcase                    "respect upper case in search
-:nmap \q :nohlsearch<CR>
+nmap \q :nohlsearch<CR>
 
 
 " Text Formatting "
@@ -103,13 +105,13 @@ set smartindent                  "set indent based on blocks in code
 
 " Folding "
 " ---------------------------------------------------------------------
+set foldcolumn=1                 "show folds in left gutter
 set foldenable                   "enable folding
 set foldmethod=indent            "the kind of folding
 set foldlevel=100                "100=do not autofold
 au BufWinLeave *.* mkview        "save folds between edits
 au BufWinEnter *.* silent loadview
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" set foldcolumn=1                 "show folds in left gutter
 
 
 " Spell "

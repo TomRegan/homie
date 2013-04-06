@@ -11,6 +11,7 @@
     df = diff --color
     ll = log --oneline --graph
     st = status
+    ds = diff --stat
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

@@ -84,6 +84,5 @@ CONFIG_DIR=~/Development/config
 [ -f ${CONFIG_DIR}/.pass-settings ] && source ${CONFIG_DIR}/.pass-settings
 [ -f ${CONFIG_DIR}/.ssh-settings ] && source ${CONFIG_DIR}/.ssh-settings
 
-# History
-# 2012-07-09 : added git branch to PS1
-# 2012-07-13 : added rvm
+# search through local (homebrew) before system binaries
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
