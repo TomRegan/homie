@@ -23,6 +23,7 @@ Bundle 'tComment'
 Bundle 'syntastic'
 Bundle 'ctrlp.vim'
 Bundle 'Gundo'
+Bundle 'vim-sparkup'
 
 
 " General Settings "
