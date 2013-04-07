@@ -1,6 +1,9 @@
+# mac crud
 .DS_store
-.vim/view/
+# vim crud
+view/
 .netrwhist
 tags/
+# other crud
 *.pyc
 *.swp

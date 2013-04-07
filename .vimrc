@@ -1,38 +1,44 @@
 " File        : .vimrc
-" Author      : Tom Regan <
+" Author      : Tom Regan <code.tom.regan@gmail.com>
+
+" *********************************************************************
+" Application Settings " **********************************************
+" *********************************************************************
+
+" Bundler Settings "
+" ---------------------------------------------------------------------
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
 
 
+" Bundles "
 " ---------------------------------------------------------------------
-" Vim Settings " ------------------------------------------------------
-" ---------------------------------------------------------------------
-
-" Pathogen "
-" ---------------------------------------------------------------------
-filetype off                     "required for pathogen to load plugins
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
+Bundle 'gmarik/vundle'
+Bundle 'Solarized'
+Bundle 'The-NERD-tree'
+Bundle 'delimitMate.vim'
+Bundle 'tComment'
+Bundle 'syntastic'
+Bundle 'ctrlp.vim'
+Bundle 'Gundo'
 
 
 " General Settings "
 " ---------------------------------------------------------------------
 filetype plugin indent on
 set t_Co=256                     "256 colour setting
-set nocompatible                 "disable Vi compatibility
 set autoindent                   "use current indentation for new lines
-set backspace=indent,eol,start   "allow c-h over everything
+set backspace=indent,eol,start   "allow del over everything
 set backupdir=/tmp               "keep swap files in /tmp
 set encoding=utf-8               "defualt encoding
 set filetype=on                  "detect filetype
 set ruler                        "display the cursor position
 set virtualedit=all              "allow cursor to roam in command mode
 set ttyfast                      "send more characters for quicker drawing
-set paste                        "enable pasting without skew
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" set mouse=a                      "mouse support
-"
-" MacOSX Disabilities ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" set undodir=/tmp                 "keep undo files in /tmp
-" set undofile                     "persistent undo
+" set paste                        "enable pasting without skew
 
 
 " UI Settings "
@@ -40,6 +46,7 @@ set paste                        "enable pasting without skew
 syntax enable                      "syntax enabled
 set background=dark                "variety of solarized
 colorscheme solarized
+set completeopt+=preview
 set breakat="^I!@*-+;:,./?"        "break line on characters
 set confirm                        "instead of failing, request confirmation
 set display=lastline               "show over-long lines instead of @
@@ -48,24 +55,13 @@ set list                           "show pagination characters
 set listchars=tab:»\ ,trail:·,eol:↵ "show tabs and trailing ws
 set linebreak                      "break line instead of inserting newline
 set nowrap                         "don't wrap long lines
-set number                         "line numbers
+set nonu                           "no line numbers
 set showcmd                        "show the command being typed
                                    "  for :q, :e
 set showtabline=1                  "show the tab bar when there are tabs
 set syntax=on                      "syntax highlighting on
 au BufRead,BufNewFile *.asm set filetype=asmmips32
 au Syntax newland source /home/tom/.vim/syntax/asmmips32.vim
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" colo molokai_t_Co256
-" let g:solarized_termcolors=256
-" let g:solarized_visibility="normal"
-" let g:solarized_contrast="normal"
-" let g:solarized_termtrans=1
-" set cursorcolumn                   "highlight the current column
-" set cursorline                     "highlight the current line
-" set matchpairs                     "highlight block delimiting characters
-" set matchtime=5                    "tenths of a second to show highlight
-" set showbreak=\                    "set the line continuation character
 
 
 " Buffers "
@@ -78,6 +74,7 @@ nmap <silent> <C-k> :bprev<CR>
 " Movement "
 " ---------------------------------------------------------------------
 nmap <silent> ; $
+nmap <silent> d; d$
 nmap <silent> QQ :q<CR>
 nmap <silent> WW :w<CR>
 nmap <silent> WQ :xa<CR>
@@ -105,26 +102,31 @@ set smartindent                  "set indent based on blocks in code
 
 " Folding "
 " ---------------------------------------------------------------------
-set foldcolumn=1                 "show folds in left gutter
 set foldenable                   "enable folding
 set foldmethod=indent            "the kind of folding
 set foldlevel=100                "100=do not autofold
 au BufWinLeave *.* mkview        "save folds between edits
 au BufWinEnter *.* silent loadview
 " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+"set foldcolumn=1                 "show folds in left gutter
 
 
 " Spell "
 " ---------------------------------------------------------------------
 noremap gs :setlocal spell! spelllang=en_gb<CR>
 hi SpellBad cterm=reverse ctermfg=1
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-"set spell
 
 
+" Color Overrides "
 " ---------------------------------------------------------------------
-" Plugin Settings " ---------------------------------------------------
-" ---------------------------------------------------------------------
+hi! link SignColumn LineNr
+hi! link Comment vimIsCommand
+hi! link vimLineComment Comment
+
+
+" *********************************************************************
+" Plugin Configuration " **********************************************
+" *********************************************************************
 
 " Align "
 " ---------------------------------------------------------------------
@@ -146,37 +148,10 @@ map gu :GundoToggle<CR>
 " ---------------------------------------------------------------------
 map gn :NERDTreeToggle<CR>
 let NERDTreeQuitOnOpen=1
+" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 " let NERDTreeHighlightCursorline=1
 " let NERDTreeChDirMode=2
 " let NERDChristmasTree=0
-
-" OmniComplete "
-" ---------------------------------------------------------------------
-let OmniCpp_NamespaceSearch = 1
-let OmniCpp_GlobalScopeSearch = 1
-let OmniCpp_ShowAccess = 1
-let OmniCpp_ShowPrototypeInAbbr = 1 "show function parameters
-let OmniCpp_MayCompleteDot = 1      "autocomplete after .
-let OmniCpp_MayCompleteArrow = 1    "autocomplete after ->
-let OmniCpp_MayCompleteScope = 1    "autocomplete after ::
-let OmniCpp_DefaultNamespaces = ["std", "_GLIBCXX_STD"]
-" automatically open and close the popup menu / preview window
-au CursorMovedI,InsertLeave * if pumvisible() == 0|silent! pclose|endif
-set completeopt=menuone,menu,preview
-au FileType python set omnifunc=pythoncomplete#Complete
-" ---------------------------------------------------------------------
-"inoremap <tab> <c-r>=Smart_TabComplete()<CR>
-"inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-
-" PyFlakes "
-" ---------------------------------------------------------------------
-let g:pyflakes_use_quickfix = 0
-
-
-" snipMate "
-" ---------------------------------------------------------------------
-let g:snips_author = 'Tom Regan <tom.regan@ovi.com>'
 
 
 " Syntastic "
@@ -189,63 +164,30 @@ let g:syntastic_warning_symbol='●'
 " let g:syntastic_auto_loc_list=1
 
 
-" SuperTab "
+" CtrlP "
 " ---------------------------------------------------------------------
-let g:SuperTabDefaultCompletionType = "<C-x><C-o>"
-" au filetype python let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-set completeopt=menuone,longest,preview
-inoremap <nul> <C-x><C-o>
-let g:SuperTabMappingBackward =  "<C-nul>"       "forward menu cycle
-let g:SuperTabMappingForward  =  "<s-C-nul>"     "reverse menu-cycle
-let g:SuperTabDefaultCompletionType = "context"
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" let g:SuperTabDefaultCompletionType = "context"
+set rtp^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_match_window_reversed = 0
+let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
+let g:ctrlp_dotfiles = 0
+let g:ctrlp_cmd = 'CtrlPMixed'          " search anything (in files, buffers and MRU files at the same time.)
+let g:ctrlp_working_path_mode = 'ra'    " search for nearest ancestor like .git, .hg, and the directory of the current file
+let g:ctrlp_match_window_bottom = 0     " show the match window at the top of the screen
+let g:ctrlp_max_height = 10             " maxiumum height of match window
+let g:ctrlp_switch_buffer = 'et'        " jump to a file if it's open already
+let g:ctrlp_use_caching = 1             " enable caching
+let g:ctrlp_clear_cache_on_exit=0       " speed up by not removing clearing cache evertime
+let g:ctrlp_show_hidden = 1             " show me dotfiles
+let g:ctrlp_mruf_max = 250              " number of recently opened files """""
 
 
 " delimitMate "
 " ---------------------------------------------------------------------
-let delimitMate_expand_cr=1
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" let delimitMate_expand_space=1
-" imap <unique> <silent> <Tab> <Plug>delimitMateS-Tab
-
-
-" Tagbar "
-" ---------------------------------------------------------------------
-map <silent> gm :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-let g:tagbar_autoclose = 1
-let g:tagbar_compact = 1
-
-
-" Taglist "
-" ---------------------------------------------------------------------
-" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-" map <silent> gm :TlistToggle<CR>
-" let Tlist_Inc_Winwidth=0            "Don't resize the window
-" let Tlist_Use_Right_Window=0        "Open on the right of the screen
-" let Tlist_GainFocus_On_ToggleOpen=1 "Focus Tlist window
-
-
-" CtrlP "
-" ---------------------------------------------------------------------
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-" let g:ctrlp_match_window_bottom = 0
-let g:ctrlp_match_window_reversed = 0
-let g:ctrlp_custom_ignore = '\v\~$|\.(o|swp|pyc|wav|mp3|ogg|blend)$|(^|[/\\])\.(hg|git|bzr)($|[/\\])|__init__\.py'
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_dotfiles = 0
-let g:ctrlp_switch_buffer = 0
+let g:delimitMate_expand_cr = 1
+let g:delimitMate_expand_space = 1
 
 
 " Todolist "
 " ---------------------------------------------------------------------
 let g:tlTokenList = ['FIX', 'FIXME', 'TODO']
 
-
-" ---------------------------------------------------------------------
-" Color Overrides " ---------------------------------------------------
-" ---------------------------------------------------------------------
-
-hi! link SignColumn LineNr
-hi! link StatusLine DiffAdd
