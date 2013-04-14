@@ -25,6 +25,7 @@ Bundle 'ctrlp.vim'
 Bundle 'Gundo'
 Bundle 'vim-sparkup'
 Bundle 'vim-multiple-cursors'
+Bundle 'vim-fugitive'
 
 
 " General Settings "
