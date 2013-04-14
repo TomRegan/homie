@@ -24,6 +24,7 @@ Bundle 'syntastic'
 Bundle 'ctrlp.vim'
 Bundle 'Gundo'
 Bundle 'vim-sparkup'
+Bundle 'vim-multiple-cursors'
 
 
 " General Settings "
@@ -179,7 +180,8 @@ let g:ctrlp_switch_buffer = 'et'        " jump to a file if it's open already
 let g:ctrlp_use_caching = 1             " enable caching
 let g:ctrlp_clear_cache_on_exit=0       " speed up by not removing clearing cache evertime
 let g:ctrlp_show_hidden = 1             " show me dotfiles
-let g:ctrlp_mruf_max = 250              " number of recently opened files """""
+let g:ctrlp_mruf_max = 250              " number of recently opened files
+let g:ctrlp_map = '<C-t>'               " remap to unused key
 
 
 " delimitMate "
@@ -191,4 +193,12 @@ let g:delimitMate_expand_space = 1
 " Todolist "
 " ---------------------------------------------------------------------
 let g:tlTokenList = ['FIX', 'FIXME', 'TODO']
+
+
+" vim-multiple-cursors "
+" ---------------------------------------------------------------------
+let g:multi_cursor_next_key="<C-n>"
+let g:multi_cursor_prev_key="<C-p>"
+let g:multi_cursor_skip_key="<C-x>"
+let g:multi_cursor_exit_key="<Esc>"
 
