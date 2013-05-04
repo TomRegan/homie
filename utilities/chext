@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-[[ $# != 2 ]] && echo "usage: ${0%.*} <file> <extension>" && exit 1
+[[ $# != 2 ]] && echo "usage: $(basename ${0%.*}) <file> <extension>" && exit 1
 
 OLDFILE=$1
 NEWEXTN=.$2
@@ -12,6 +12,6 @@ NOEXTN=${OLDFILE%.*}
 [[ "$NEWEXTN" = ".-" ]] && unset NEWEXTN
 NEWFILE=${NOEXTN}${NEWEXTN}
 
-[[ -f $NEWFILE ]] && echo "file '$NEWFILE' already exists" && exit 1
+[[ -f "$NEWFILE" ]] && echo "file '$NEWFILE' already exists" && exit 1
 
-mv $OLDFILE $NEWFILE
+mv "$OLDFILE" "$NEWFILE"

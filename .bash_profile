@@ -85,4 +85,4 @@ CONFIG_DIR=~/Development/config
 [ -f ${CONFIG_DIR}/.ssh-settings ] && source ${CONFIG_DIR}/.ssh-settings
 
 # search through local (homebrew) before system binaries
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/${CONFIG_DIR}/utilities
