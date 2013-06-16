@@ -7,11 +7,10 @@ NEWEXTN=.$2
 
 [[ ! -f $OLDFILE ]] && echo "file '$OLDFILE' does not exist" && exit 1
 
-NOEXTN=${OLDFILE%.*}
 # allow an extension to be removed with '-'
 [[ "$NEWEXTN" = ".-" ]] && unset NEWEXTN
-NEWFILE=${NOEXTN}${NEWEXTN}
+NEWFILE=${OLDFILE%.*}${NEWEXTN}
 
 [[ -f "$NEWFILE" ]] && echo "file '$NEWFILE' already exists" && exit 1
 
-mv "$OLDFILE" "$NEWFILE"
+mv -f "$OLDFILE" "$NEWFILE"
