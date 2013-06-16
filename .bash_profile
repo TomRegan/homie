@@ -30,10 +30,6 @@ COLOUR_CYAN="\[\033[00;36m\]"
 COLOUR_WHITE="\[\033[00;37m\]"
 COLOUR_ORANGE="\[\033[00;91m\]"
 
-# set the prompt
-PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}$(__git_ps1 "%s")\
-${COLOUR_RESET}\$ "
-
 # Programmable completion features
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
@@ -60,3 +56,9 @@ done
 
 # search through local (homebrew) before system binaries
 export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/${CONFIG_DIR}/utilities
+
+# set the prompt
+PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
+PS1+='$(__git_ps1 "%s")'
+PS1+="${COLOUR_RESET}\$ "
+
