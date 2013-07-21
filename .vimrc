@@ -26,6 +26,7 @@ Bundle 'Gundo'
 Bundle 'vim-sparkup'
 Bundle 'vim-multiple-cursors'
 Bundle 'vim-fugitive'
+Bundle 'go.vim'
 
 
 " General Settings "
