@@ -4,11 +4,9 @@
 view/
 .netrwhist
 tags/
+# emacs crud
+/emacs.d/ac-comphist.dat
+/emacs.d/srecode-map.el
 # other crud
 *.pyc
 *.swp
-.emacs.d
-
-# emacs crud
-ac-comphist.dat
-/emacs.d/srecode-map.el
