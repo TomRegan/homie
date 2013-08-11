@@ -8,3 +8,7 @@ tags/
 *.pyc
 *.swp
 .emacs.d
+
+# emacs crud
+ac-comphist.dat
+/emacs.d/srecode-map.el

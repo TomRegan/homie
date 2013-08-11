@@ -35,6 +35,9 @@
 
 (message "Prelude is powering up... Be patient, Master %s!" (getenv "USER"))
 
+(message "Loading CEDET (development branch)")
+(load-file "~/.emacs.d/vendor/cedet-bzr/cedet-devel-load.el")
+
 (defvar prelude-dir (file-name-directory load-file-name)
   "The root dir of the Emacs Prelude distribution.")
 (defvar prelude-core-dir (expand-file-name "core" prelude-dir)
@@ -92,7 +95,7 @@ by Prelude.")
 (when (file-exists-p prelude-modules-file)
   (load prelude-modules-file))
 
-;; config changes made through the customize UI will be store here
+;; config changes made through the customize UI will be stored here
 (setq custom-file (expand-file-name "custom.el" prelude-personal-dir))
 
 ;; load the personal settings (this includes `custom-file')
@@ -101,9 +104,5 @@ by Prelude.")
   (mapc 'load (directory-files prelude-personal-dir 't "^[^#].*el$")))
 
 (message "Prelude is ready to do thy bidding, Master %s!" (getenv "USER"))
-
-(prelude-eval-after-init
- ;; greet the use with some useful tip
- (run-at-time 5 nil 'prelude-tip-of-the-day))
 
 ;;; init.el ends here
