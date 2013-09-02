@@ -1,14 +1,23 @@
-;; location of themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/busybee")
-;; load whichever theme currently tickes me
-(load-theme 'busybee t)
-;; enable spell-checking
-(flyspell-mode 1)
-;; augment packages with MELPA repository
+;; theming
+(add-to-list 'custom-theme-load-path ;; location of themes
+   "~/.emacs.d/themes/busybee")
+(load-theme 'busybee t) ;; select busybee theme
+(menu-bar-mode -1)      ;; disable menu bar
+
+;; flyspell
+(flyspell-mode 1) ;; enable spell-checking
+
+;; elpa
 (require 'package)
-(add-to-list 'package-archives
+(add-to-list 'package-archives ;; augment packages with MELPA repository
   '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
+;; ido
+(ido-mode t)       ;; enable ido
+(ido-ubiquitous t) ;; for all of the things
+
+
+;; automatically configured shizzle
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
