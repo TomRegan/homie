@@ -1,21 +1,24 @@
+;;; init.el --- configureation for emacs
+
 ;; theming
 (add-to-list 'custom-theme-load-path ;; location of themes
    "~/.emacs.d/themes/busybee")
 (load-theme 'busybee t) ;; select busybee theme
 (menu-bar-mode -1)      ;; disable menu bar
 
-;; flyspell
-(flyspell-mode 1) ;; enable spell-checking
+;; required packages
+(add-to-list 'load-path "~/.emacs.d/custom")
+(require 'required-packages)
 
-;; elpa
-(require 'package)
-(add-to-list 'package-archives ;; augment packages with MELPA repository
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(package-initialize)
+;; flyspell
+(flyspell-mode 1) ;; FIXME not working
+
 ;; ido
 (ido-mode t)       ;; enable ido
 (ido-ubiquitous t) ;; for all of the things
 
+;; undo tree
+(global-undo-tree-mode)
 
 ;; automatically configured shizzle
 (custom-set-variables
