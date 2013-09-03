@@ -15,4 +15,12 @@
 ;; undo tree
 (global-undo-tree-mode)
 
+;; parens pairing
+(electric-pair-mode t)
+
+;; whitespace highlighting
+(require 'whitespace)
+(setq whitespace-style '(face tabs empty trailing lines-tail))
+(global-whitespace-mode 1)
+
 (provide 'editor)
