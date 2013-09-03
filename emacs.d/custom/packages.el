@@ -18,22 +18,19 @@
     undo-tree
 ))
 
-(defun installed-p (package)
-  (package-installed-p package))
-  
 (defun packages-installed-p (packages)
-  (if packages
-      (if (installed-p (car packages)) 
-	  (packages-installed-p (cdr packages))
-	nil)
-    t))
+  (if (not packages)
+      t
+    (if (package-installed-p (car packages)) 
+	(packages-installed-p (cdr packages))
+      nil)))
+
+(defun install-packages (packages)
+  (mapc 'install-package packages))
 
 (defun install-package (package)
   (unless (package-installed-p package)
     (package-install package)))
-
-(defun install-packages (packages)
-  (mapc 'install-package packages))
 
 (defun install-missing-packages ()
   (unless (packages-installed-p packages)
