@@ -1,8 +1,8 @@
 ;;; editor.el --- editor settings
 
 ;; theming
-(add-to-list 'custom-theme-load-path  "~/.emacs.d/themes/busybee")
-(load-theme 'busybee t)
+(add-to-list 'custom-theme-load-path  "~/.emacs.d/themes/solarized")
+(load-theme 'solarized-dark t)
 (menu-bar-mode -1)  ;; disable menu bar
 
 ;; flyspell
