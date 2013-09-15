@@ -1,0 +1,15 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("b"
+ (filename . "~/emacs.md")
+ (front-context-string . "\n(provide 'packa")
+ (rear-context-string . "ssing-packages)\n")
+ (position . 1648))
+("a"
+ (filename . "~/emacs.md")
+ (front-context-string . "I haven't writte")
+ (rear-context-string . "\n\n### elisp-p?\n\n")
+ (position . 625))
+)
