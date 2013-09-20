@@ -38,24 +38,25 @@ fi
 # source environment
 CONFIG_DIR=~/Development/config
 CONFIG_FILES=(
-    ".bash_aliases"
-    ".perforce_settings"
-    ".mac_settings"
-    ".ruby_settings"
-    ".java_settings"
-    ".mvn_settings"
-    ".git-completion"
-    ".git-prompt"
-    ".p4settings"
-    ".pass-settings"
-    ".ssh-settings"
+    "bash_aliases"
+    "perforce_settings"
+    "mac_settings"
+    "ruby_settings"
+    "java_settings"
+    "mvn_settings"
+    "git-completion"
+    "git-prompt"
+    "p4settings"
+    "pass-settings"
+    "ssh-settings"
+    "perforce_prompt"
 )
 for file in ${CONFIG_FILES[@]}; do
     [ -f ${CONFIG_DIR}/${file} ] && source ${CONFIG_DIR}/${file}
 done
 
 # search through local (homebrew) before system binaries
-export PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/${CONFIG_DIR}/utilities
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFIG_DIR}/utilities
 
 # set the prompt
 PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
