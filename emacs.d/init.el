@@ -4,6 +4,7 @@
 (add-to-list 'load-path "~/.emacs.d/custom")
 (require 'packages)
 (require 'editor)
+(require 'backup)
 
 ;; automatically configured shizzle
 (custom-set-variables

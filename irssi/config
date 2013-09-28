@@ -96,15 +96,12 @@ chatnets = {
     max_whois = "30";
   };
   SILC = { type = "SILC"; };
-  fn = {
-    type = "IRC";
-    nick = "akairobotto";
-  };
+  fn = { type = "IRC"; nick = "akairobotto"; };
 };
 
 channels = (
   { name = "#irssi"; chatnet = "ircnet"; autojoin = "No"; },
-  { name = "silc"; chatnet = "silc"; autojoin = "No"; }
+  { name = "silc"; chatnet = "silc"; autojoin = "No"; },
 );
 
 aliases = {

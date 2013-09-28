@@ -7,6 +7,7 @@ tags/
 # emacs crud
 /emacs.d/ac-comphist.dat
 /emacs.d/srecode-map.el
+emacs.d/backups/
 # other crud
 *.pyc
 *.swp
