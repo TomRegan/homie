@@ -12,6 +12,20 @@ PACKAGES=(
 # phony packages do not provide an executable with the same name
 PHONY=( vim-enhanced )
 
+declare -A VERSIONS
+VERSIONS[emacs]=24.*
+VERSIONS[bash]=4.*
+VERSIONS[vim]=7.*
+
+CWD=$(pwd)
+[[ -z $HOM ]] && HOM=/home/$(logname)/
+declare -A LINKS
+LINKS[.bashrc]=bash_profile
+LINKS[.tmux.conf]=tmux.conf
+LINKS[.emacs.d]=emacs.d
+LINKS[.vim]=vim
+LINKS[.gitconfig]=gitconfig
+
 warn()
 {
     tput setaf 1  # red
@@ -37,22 +51,24 @@ install_if_missing()
     done;
 }
 
+
+verify_installed_versions()
+{
+    for ver in ${!VERSIONS[@]}; do
+	[[ ! $($ver --version|head -n 1) =~ ${VERSIONS[$ver]} ]] && (
+	    warn "Unexpected version of $ver (wanted ${VERSIONS[$ver]})."
+	)
+    done
+}
+
+create_links()
+{
+    for link in ${!LINKS[@]}; do
+	[[ ! -e ${HOM}$link ]] && ln -s $CWD/${LINKS[$link]} ${HOM}$link
+    done
+}
+
 [[ "$(uname)" == "Linux" ]] && exit_if_not_root
 install_if_missing ${PACKAGES[@]}
-
-CWD=$(pwd)
-[[ -z $HOM ]] && HOM=/home/$(logname)/
-declare -A LINKS
-LINKS[.bashrc]=bash_profile
-LINKS[.tmux.conf]=tmux.conf
-LINKS[.emacs.d]=emacs.d
-LINKS[.vim]=vim
-
-for link in ${!LINKS[@]}; do
-    [[ ! -e ${HOM}$link ]] && ln -s $CWD/${LINKS[$link]} ${HOM}$link
-done
-
-#[[ ! -h ~/.bashrc ]] && ln -s $CWD/bash_profile ~/.bashrc
-#[[ ! -h ~/.tmux.conf ]] && ln -s $CWD/tmux.conf ~/.tmux.conf
-#[[ ! -h ~/.emacs.d ]] && ln -s $CWD/emacs.d ~/.emacs.d
-#[[ ! -h ~/.vim ]] && ln -s $CWD/vim ~/.vim
+verify_installed_versions
+create_links
