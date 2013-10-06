@@ -4,6 +4,7 @@ PACKAGES=(
     clang
     colordiff
     emacs
+    irssi
     mosh
     nmap
     tmux
@@ -21,10 +22,12 @@ CWD=$(pwd)
 [[ -z $HOM ]] && HOM=/home/$(logname)/
 declare -A LINKS
 LINKS[.bashrc]=bash_profile
+LINKS[.bash_profile]=bash_profile
 LINKS[.tmux.conf]=tmux.conf
 LINKS[.emacs.d]=emacs.d
 LINKS[.vim]=vim
 LINKS[.gitconfig]=gitconfig
+LINKS[.irssi]=irssi
 
 warn()
 {
