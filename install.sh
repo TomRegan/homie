@@ -43,6 +43,12 @@ exit_if_not_root()
     )  && exit
 }
 
+init()
+{
+    local hostname=$(hostname)
+    [[ ! $(git branch|grep \*) =~ ${hostname} ]] && git checkout -b ${hostname}
+}
+
 install_if_missing()
 {
     local packages=$@
@@ -72,6 +78,7 @@ create_links()
 }
 
 [[ "$(uname)" == "Linux" ]] && exit_if_not_root
+init
 install_if_missing ${PACKAGES[@]}
 verify_installed_versions
 create_links
