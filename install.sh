@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 PACKAGES=(
+    autofs
     clang
     colordiff
     emacs
