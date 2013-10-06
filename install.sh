@@ -12,7 +12,7 @@ PACKAGES=(
     vim-enhanced
 )
 # phony packages do not provide an executable with the same name
-PHONY=( vim-enhanced )
+PHONY=( autofs vim-enhanced )
 
 declare -A VERSIONS
 VERSIONS[emacs]=24.*
@@ -47,7 +47,9 @@ exit_if_not_root()
 init()
 {
     local hostname=$(hostname)
-    [[ ! $(git branch|grep \*) =~ ${hostname} ]] && git checkout -b ${hostname}
+    [[ ! $(git branch|grep \*) =~ ${hostname} ]] && (
+	git checkout -b ${hostname} > /dev/null 2>&1
+    )
 }
 
 install_if_missing()
