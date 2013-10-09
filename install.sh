@@ -19,8 +19,7 @@ VERSIONS[emacs]=24.*
 VERSIONS[bash]=4.*
 VERSIONS[vim]=7.*
 
-CWD=$(pwd)
-[[ -z $HOM ]] && HOM=/home/$(logname)/
+
 declare -A LINKS
 LINKS[.bashrc]=bash_profile
 LINKS[.bash_profile]=bash_profile
@@ -29,6 +28,10 @@ LINKS[.emacs.d]=emacs.d
 LINKS[.vim]=vim
 LINKS[.gitconfig]=gitconfig
 LINKS[.irssi]=irssi
+
+CWD=$(pwd)
+WHO=$(logname)
+[[ -z $HOM ]] && HOM=/home/$WHO
 
 warn()
 {
@@ -41,7 +44,7 @@ exit_if_not_root()
 {
     [[ $UID -ne 0 ]] && (
 	warn Must be run as root to install packages.
-    )  && exit
+    ) && exit
 }
 
 init()
@@ -63,6 +66,23 @@ install_if_missing()
     done;
 }
 
+install_libflashplayer()
+{
+    local uri=https://www.dropbox.com/s/8s39sojx07hhy7t/libflashplayer.so.gz
+    local filename=$(basename $uri)
+    local destination=$HOM/.mozilla/plugins
+    local funpacked=${filename%.*}
+    local curlopts="-f --create-dirs -L -o"
+    [[ ! -f $destination/$funpacked ]] && (
+	curl $curlopts $destination/$filename $uri && (
+	    gunzip -f $destination/$filename || (
+		rm $destination/$filename
+		warn "Failed to unpack $filename"
+	    )
+	    [[ -f $destination/$funpacked ]] && chown $WHO $destination/$funpacked
+	) || warn "Failed to download $filename"
+    )
+}
 
 verify_installed_versions()
 {
@@ -76,7 +96,7 @@ verify_installed_versions()
 create_links()
 {
     for link in ${!LINKS[@]}; do
-	[[ ! -e ${HOM}$link ]] && ln -s $CWD/${LINKS[$link]} ${HOM}$link
+	[[ ! -e ${HOM}/$link ]] && ln -s $CWD/${LINKS[$link]} ${HOM}/$link
     done
 }
 
@@ -85,3 +105,4 @@ init
 install_if_missing ${PACKAGES[@]}
 verify_installed_versions
 create_links
+install_libflashplayer
