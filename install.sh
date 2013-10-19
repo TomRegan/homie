@@ -1,5 +1,44 @@
 #!/usr/bin/env bash
 
+CWD=$(pwd)
+WHO=$(logname)
+
+if [[ $(uname) =~ Darwin ]]; then
+    PACKMAN=brew
+    HOMES=/Users
+else
+    PACKMAN=yum
+    HOMES=/home
+fi
+[[ -z $HOM ]] && HOM=$HOMES/$WHO
+
+install_bash()
+{
+    local shells=/etc/shells
+    local bashbin=/usr/local/bin/bash
+    [[ ! -f $bashbin ]] && brew install bash
+    grep $bashbin $shells; [[ $? -eq 0 ]] &&  return
+    [[ -f $shells  &&  -f $bashbin ]] && echo $bashbin >> $shells
+    hash $bashbin bash
+    return $bashbin
+}
+
+warn()
+{
+    tput setaf 1  # red
+    echo $@
+    tput sgr0  # reset
+}
+
+# we want to guard against using the features below if bash version < 4
+[[ ! $(bash --version | head -n 1) =~ 4.[0-9] ]] && (
+    warn "Bash version 4 is not being used but is required."
+    echo -n "Do you want to use $PACKMAN to install Bash 4? [Y/*]: "
+    [[ $(read UIN && echo $UIN) =~ Y|y ]] && (
+	echo "Run this script again using $(install_bash)"
+    )
+) && exit
+
 PACKAGES=(
     autofs
     clang
@@ -15,10 +54,8 @@ PACKAGES=(
 PHONY=( autofs vim-enhanced )
 
 declare -A VERSIONS
-VERSIONS[emacs]=24.*
-VERSIONS[bash]=4.*
-VERSIONS[vim]=7.*
-
+VERSIONS[emacs]=24
+VERSIONS[vim]=7
 
 declare -A LINKS
 LINKS[.bashrc]=bash_profile
@@ -28,17 +65,6 @@ LINKS[.emacs.d]=emacs.d
 LINKS[.vim]=vim
 LINKS[.gitconfig]=gitconfig
 LINKS[.irssi]=irssi
-
-CWD=$(pwd)
-WHO=$(logname)
-[[ -z $HOM ]] && HOM=/home/$WHO
-
-warn()
-{
-    tput setaf 1  # red
-    echo $@
-    tput sgr0  # reset
-}
 
 exit_if_not_root()
 {
@@ -61,7 +87,7 @@ install_if_missing()
     for pkg in ${packages[@]}; do
 	[[ ${PHONY[@]/$pkg/} != ${PHONY[@]} ]] && continue
 	which $pkg > /dev/null 2>&1; [[ $? -ne 1 ]] && continue
-	yum install -y ${packages[@]}
+	$PACKMAN install -y ${packages[@]}
 	break
     done;
 }
@@ -87,7 +113,7 @@ install_libflashplayer()
 verify_installed_versions()
 {
     for ver in ${!VERSIONS[@]}; do
-	[[ ! $($ver --version|head -n 1) =~ ${VERSIONS[$ver]} ]] && (
+	[[ ! $($ver --version|head -n 1) =~ ${VERSIONS[$ver]}.[0-9] ]] && (
 	    warn "Unexpected version of $ver (wanted ${VERSIONS[$ver]})."
 	)
     done
@@ -99,6 +125,7 @@ create_links()
 	[[ ! -e ${HOM}/$link ]] && ln -s $CWD/${LINKS[$link]} ${HOM}/$link
     done
 }
+
 
 [[ "$(uname)" == "Linux" ]] && exit_if_not_root
 init
