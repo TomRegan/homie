@@ -45,13 +45,15 @@ PACKAGES=(
     colordiff
     emacs
     irssi
+    maven
     mosh
     nmap
+    pass
     tmux
     vim-enhanced
 )
 # phony packages do not provide an executable with the same name
-PHONY=( autofs vim-enhanced )
+PHONY=( autofs maven vim-enhanced )
 
 declare -A VERSIONS
 VERSIONS[emacs]=24
