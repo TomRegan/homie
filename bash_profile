@@ -57,10 +57,11 @@ for file in ${CONFIG_FILES[@]}; do
 done
 
 # search through local (homebrew) before system binaries
-export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFIG_DIR}/utilities
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFIG_DIR}/utilities:/opt/idea-IU-129.1359/bin
 
 # set the prompt
 PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
 PS1+='$(__git_ps1 "%s")'
+PS1+='$(__p4_ps1)'
 PS1+="${COLOUR_RESET}\$ "
 
