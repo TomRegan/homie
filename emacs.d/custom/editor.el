@@ -23,4 +23,8 @@
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 (global-whitespace-mode 1)
 
+;; ag
+(global-set-key (kbd "C-c C-s") 'ag)
+(setq ag-highlight-search t)
+
 (provide 'editor)
