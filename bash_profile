@@ -62,6 +62,5 @@ export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFI
 # set the prompt
 PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
 PS1+='$(__git_ps1 "%s")'
-PS1+='$(__p4_ps1)'
 PS1+="${COLOUR_RESET}\$ "
 

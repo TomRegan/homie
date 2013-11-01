@@ -41,12 +41,14 @@ warn()
 
 PACKAGES=(
     autofs
+    cmake
     clang
     colordiff
     emacs
     irssi
     mosh
     nmap
+    strace
     tmux
     vim-enhanced
 )
