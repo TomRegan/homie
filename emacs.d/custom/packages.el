@@ -8,6 +8,7 @@
 ;; install missing packages
 (defvar packages
   '(ag
+    autopair
     busybee-theme
     color-theme-solarized
     git-commit-mode

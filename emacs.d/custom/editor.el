@@ -16,7 +16,7 @@
 (global-undo-tree-mode)
 
 ;; parens pairing
-(electric-pair-mode t)
+(autopair-global-mode 1)
 
 ;; whitespace highlighting
 (require 'whitespace)

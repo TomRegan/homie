@@ -12,6 +12,13 @@ else
 fi
 [[ -z $HOM ]] && HOM=$HOMES/$WHO
 
+warn()
+{
+    tput setaf 1  # red
+    echo $@
+    tput sgr0  # reset
+}
+
 install_bash()
 {
     local shells=/etc/shells
@@ -20,28 +27,31 @@ install_bash()
     grep $bashbin $shells; [[ $? -eq 0 ]] &&  return
     [[ -f $shells  &&  -f $bashbin ]] && echo $bashbin >> $shells
     hash $bashbin bash
-    return $bashbin
+    echo -n "Link bash_profile to ~/.bash_profile? [Y/*]: "
+    [[ $(read UIN && echo $UIN) =~ Y|y ]] && ln bash_profile ~/.bash_profile
+    echo "Run this script again using $bashbin"
 }
 
-warn()
+check_bash()
 {
-    tput setaf 1  # red
-    echo $@
-    tput sgr0  # reset
+    # we want to guard against using the features below if bash version < 4
+    if [[ ! $(bash --version | head -n 1) =~ 4.[0-9] ]]; then
+	warn "Bash version 4 is not being used but is required."
+	echo -n "Do you want to use $PACKMAN to install Bash 4? [Y/*]: "
+	[[ $(read UIN && echo $UIN) =~ Y|y ]] && install_bash
+	exit
+    fi
+    
 }
+#check_bash
 
-# we want to guard against using the features below if bash version < 4
-[[ ! $(bash --version | head -n 1) =~ 4.[0-9] ]] && (
-    warn "Bash version 4 is not being used but is required."
-    echo -n "Do you want to use $PACKMAN to install Bash 4? [Y/*]: "
-    [[ $(read UIN && echo $UIN) =~ Y|y ]] && (
-	echo "Run this script again using $(install_bash)"
-    )
-) && exit
-
-PACKAGES=(
+LINUX_PACKAGES=(
     autofs
     clang
+    vin-enhanced
+)
+
+PACKAGES=(
     colordiff
     emacs
     irssi
@@ -50,9 +60,10 @@ PACKAGES=(
     nmap
     pass
     tmux
-    vim-enhanced
+    unrar
 )
-# phony packages do not provide an executable with the same name
+# phony packages do not provide an executable with the same name so they
+# won't be used to determine if we should install packages
 PHONY=( autofs maven vim-enhanced )
 
 declare -A VERSIONS
@@ -87,7 +98,9 @@ install_if_missing()
 {
     local packages=$@
     for pkg in ${packages[@]}; do
+	# continue if the package is in the list of phonies
 	[[ ${PHONY[@]/$pkg/} != ${PHONY[@]} ]] && continue
+	# continue if the package is installed
 	which $pkg > /dev/null 2>&1; [[ $? -ne 1 ]] && continue
 	$PACKMAN install -y ${packages[@]}
 	break
@@ -134,4 +147,4 @@ init
 install_if_missing ${PACKAGES[@]}
 verify_installed_versions
 create_links
-install_libflashplayer
+#install_libflashplayer
