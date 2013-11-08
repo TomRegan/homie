@@ -18,6 +18,9 @@
 ;; parens pairing
 (autopair-global-mode 1)
 
+;; yes or no
+(defalias 'yes-or-no-p 'y-or-n-p)
+
 ;; whitespace highlighting
 (require 'whitespace)
 (setq whitespace-style '(face tabs empty trailing lines-tail))
