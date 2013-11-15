@@ -2,9 +2,11 @@
 
 ;; required packages
 (add-to-list 'load-path "~/.emacs.d/custom")
+(add-to-list 'load-path "~/.emacs.d/syntax")
 (require 'packages)
 (require 'editor)
 (require 'backup)
+(require 'cmake-mode)
 
 ;; automatically configured shizzle
 (custom-set-variables

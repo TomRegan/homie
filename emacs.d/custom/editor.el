@@ -16,11 +16,18 @@
 (global-undo-tree-mode)
 
 ;; parens pairing
-(electric-pair-mode t)
+(autopair-global-mode 1)
+
+;; yes or no
+(defalias 'yes-or-no-p 'y-or-n-p)
 
 ;; whitespace highlighting
 (require 'whitespace)
 (setq whitespace-style '(face tabs empty trailing lines-tail))
 (global-whitespace-mode 1)
+
+;; ag
+(global-set-key (kbd "C-c C-s") 'ag)
+(setq ag-highlight-search t)
 
 (provide 'editor)
