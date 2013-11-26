@@ -19,27 +19,29 @@ done
 
 COUNT=0
 for NEXT in *; do
-    [[ -z $LAST ]] && LAST=$NEXT && continue
+    [[ -z $LAST ]] && { LAST=$NEXT; continue; }
     FNOEXT="${NEXT%.*}"
     FEXT=${NEXT##*.}
     IS_EXCLD=false
     for EXCLUDE in ${EXCLUDES[@]}; do
-	[[ ${EXCLUDES[@]/$FEXT} != ${EXCLUDES[@]} ]] && IS_EXCLD=true && break
+	[[ ${EXCLUDES[@]/$FEXT} != ${EXCLUDES[@]} ]] && {
+	    IS_EXCLD=true; break
+	}
     done
     [[ $IS_EXCLD == true ]] && continue
-    if [[ ${LAST%.*} == $FNOEXT ]]; then
-	# report the duplicate
+    [[ ${LAST%.*} == $FNOEXT ]] && {
 	echo $NEXT is a duplicate of $LAST; COUNT+=1
-    else
+    } || {
 	LAST=$NEXT
-    fi
+    }
 done
-[[ $COUNT -eq 0 ]] && (
+[[ $COUNT -eq 0 ]] && {
     echo "$NAME: no duplicates found" 
-)||(
-    echo -n "$NAME: found $COUNT duplicate" && [[ $COUNT -gt 1 ]] && (
+}||{
+    echo -n "$NAME: found $COUNT duplicate"
+    [[ $COUNT -gt 1 ]] && {
 	echo "s" 
-    )||(
+    }||{
 	echo
-    )
-)
+    }
+}

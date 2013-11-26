@@ -47,6 +47,7 @@ check_bash()
 
 LINUX_PACKAGES=(
     autofs
+    cmake
     clang
     vin-enhanced
 )
