@@ -10,7 +10,7 @@ VERSION=1
 
 while getopts ":hvx:" opt; do
     case $opt in
-	h) echo "$USAGE && echo -e $HELP" ; exit 0 ;;
+	h) echo -e "$USAGE\n$HELP" ; exit 0 ;;
 	v) echo "$NAME version $VERSION"; exit 0 ;;
 	x) EXCLUDES=$OPTARG ;;
 	\?) echo -e "Unrecognised option: -$OPTARG\n$USAGE" ; exit 1 ;;

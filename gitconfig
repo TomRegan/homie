@@ -9,7 +9,7 @@
     co = checkout
     ci = commit
     df = diff --color
-    ll = log --oneline --graph
+    ll = log --oneline --graph --decorate --color
     st = status
     ds = diff --stat
 [difftool "sourcetree"]
@@ -20,3 +20,5 @@
 	trustExitCode = true
 [http]
 	proxy = http://localhost:1080
+[url "git://"]
+	insteadOf = https://
