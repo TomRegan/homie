@@ -18,6 +18,7 @@
     markdown-mode
     markdown-mode+
     rainbow-mode
+    rust-mode
     undo-tree
 ))
 

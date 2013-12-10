@@ -1,5 +1,8 @@
 ;;; editor.el --- editor settings
 
+;; uniquify
+(require 'uniquify)
+
 ;; theming
 (add-to-list 'custom-theme-load-path  "~/.emacs.d/themes/solarized")
 (load-theme 'solarized-dark t)
