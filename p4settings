@@ -10,4 +10,4 @@ color_p4()
 alias p4="color_p4 p4 $@"
 
 export P4USER=tomr
-export P4EDITOR=vi
+export P4EDITOR=emacs

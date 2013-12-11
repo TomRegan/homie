@@ -14,6 +14,7 @@
     git-commit-mode
     git-rebase-mode
     google-c-style
+    go-mode
     ido-ubiquitous
     markdown-mode
     markdown-mode+

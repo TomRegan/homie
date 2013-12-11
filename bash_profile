@@ -40,6 +40,7 @@ fi
 CONFIG_DIR=~/Development/config
 CONFIG_FILES=(
     "bash_aliases"
+    "bash_settings"
     "perforce_settings"
     "mac_settings"
     "ruby_settings"
@@ -60,7 +61,7 @@ done
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFIG_DIR}/utilities
 
 # set the prompt
-PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
+PS1='$(__jobs)'
+PS1+="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
 PS1+='$(__git_ps1 "%s")'
 PS1+="${COLOUR_RESET}\$ "
-

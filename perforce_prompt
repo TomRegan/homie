@@ -3,6 +3,8 @@
 __p4_ps1() { return; }
 which p4 > /dev/null 2>&1
 [[ $? -ne 0 || -z $P4_USER ]] && return
+p4 info >/dev/null 2>&1
+[[ $? -ne 0 ]] && return
 
 export P4PS_BRANCH_LEVEL=2
 export P4PS_ROOT=$(p4 info | grep 'Client root: ' | cut -d' ' -f 3)
