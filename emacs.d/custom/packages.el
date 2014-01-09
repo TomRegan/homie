@@ -11,6 +11,7 @@
     autopair
     busybee-theme
     color-theme-solarized
+    flx-ido
     git-commit-mode
     git-rebase-mode
     google-c-style
@@ -18,9 +19,11 @@
     ido-ubiquitous
     markdown-mode
     markdown-mode+
+    projectile
     rainbow-mode
     rust-mode
     undo-tree
+    zenburn-theme
 ))
 
 (defun packages-installed-p (packages)

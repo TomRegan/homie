@@ -6,3 +6,6 @@ __jobs() {
 	   echo -en "|\033[00;33m${jobs}\033[00m|"
 	}
 }
+
+VISUAL=emacs
+EDITOR=emacs

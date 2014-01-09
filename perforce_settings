@@ -1,1 +1,13 @@
-export P4_USER=tomr
+color_p4()
+{
+    if [[ "$2" == "diff" ]]; then
+        $@ | LANG=C sed -e 's/^\(+.*\)/[0;32m\1[0m/' \
+        -e 's/^\(-.*\)/[0;31m\1[0m/'
+    else
+        $@
+    fi
+}
+alias p4="color_p4 p4 $@"
+
+export P4USER=tomr
+export P4EDITOR=emacs

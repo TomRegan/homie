@@ -79,6 +79,7 @@ LINKS[.emacs.d]=emacs.d
 LINKS[.vim]=vim
 LINKS[.gitconfig]=gitconfig
 LINKS[.irssi]=irssi
+LINKS[.inputrc]=inputrc
 
 exit_if_not_root()
 {
