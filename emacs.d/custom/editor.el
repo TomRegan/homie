@@ -1,4 +1,16 @@
-;;; editor.el --- editor settings
+;;; editor --- Gui settings
+
+;;; Commentary:
+
+;;; Code:
+
+;; flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
+;; projectile
+(setq projectile-indexing-method 'git)
+(setq projectile-enable-caching t)
+(projectile-global-mode t)
 
 ;; uniquify
 (require 'uniquify)
@@ -9,11 +21,14 @@
 (menu-bar-mode -1)  ;; disable menu bar
 
 ;; flyspell
-(flyspell-mode 1) ;; FIXME not working
+(add-hook 'c++-mode-hook
+  (lambda ()
+    (flyspell-prog-mode)
+))
 
 ;; ido
-(ido-mode t)        ;; enable ido
-(ido-ubiquitous t)  ;; for all of the things
+(ido-mode t)             ;; enable ido
+(ido-ubiquitous-mode t)  ;; for all of the things
 
 ;; undo tree
 (global-undo-tree-mode)
@@ -30,7 +45,8 @@
 (global-whitespace-mode 1)
 
 ;; ag
-(global-set-key (kbd "C-c C-s") 'ag)
-(setq ag-highlight-search t)
+;;(global-set-key (kbd "C-c C-s") 'ag)
+;;(setq ag-highlight-search t)
 
 (provide 'editor)
+;;; editor.el ends here

@@ -1,2 +1,1 @@
-[[ $(uname) =~ Darwin ]] && JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.7.0_45.jdk/Contents/Home || JAVA_HOME=/usr/java/jdk1.7.0_45/
-export JAVA_HOME=$JAVA_HOME
+export JAVA_HOME=$(/usr/libexec/java_home)

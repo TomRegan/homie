@@ -1,4 +1,8 @@
-;;; packages.el --- required packages
+;;; packages.el --- Required packages
+
+;;; Commentary:
+
+;;; Code:
 
 (require 'package)
 (add-to-list 'package-archives
@@ -7,14 +11,17 @@
 
 ;; install missing packages
 (defvar packages
-  '(ag
+  '(ack-and-a-half
+    ag
     autopair
     busybee-theme
     color-theme-solarized
     flx-ido
+    flycheck
     git-commit-mode
     git-rebase-mode
     google-c-style
+    google-this
     go-mode
     ido-ubiquitous
     markdown-mode
@@ -48,3 +55,4 @@
 (install-missing-packages)
 
 (provide 'packages)
+;;; packages.el ends here

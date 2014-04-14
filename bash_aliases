@@ -18,3 +18,4 @@ alias ls='ls -G'
 alias ll='ls -al'
 which colordiff > /dev/null
 alias p4d="p4 diff -du | (( $? == 0 ? colordiff : cat   )) | more -R"
+alias cp='rsync -P'

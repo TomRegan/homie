@@ -14,9 +14,13 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# check the window size after each command and, if necessary,
-# update the values of LINES and COLUMNS.
+# SHOPTS
+## check the window size after each command, set LINES and COLUMNS.
 shopt -s checkwinsize
+## correct misspellings on cd
+shopt -s cdspell
+## automatically cd, eg on /etc<cr>
+#shopt -s autocd
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
