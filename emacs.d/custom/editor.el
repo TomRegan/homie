@@ -17,7 +17,7 @@
 
 ;; theming
 (add-to-list 'custom-theme-load-path  "~/.emacs.d/themes/solarized")
-(load-theme 'solarized-dark t)
+(load-theme 'zenburn t)
 (menu-bar-mode -1)  ;; disable menu bar
 
 ;; flyspell
