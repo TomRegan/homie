@@ -8,8 +8,8 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 ;; projectile
-(setq projectile-indexing-method 'git)
-(setq projectile-enable-caching t)
+(setq projectile-indexing-method 'git
+      projectile-enable-caching t)
 (projectile-global-mode t)
 
 ;; uniquify

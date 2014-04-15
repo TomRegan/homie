@@ -26,6 +26,7 @@
     ido-ubiquitous
     markdown-mode
     markdown-mode+
+    magit
     projectile
     rainbow-mode
     rust-mode
