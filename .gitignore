@@ -8,6 +8,7 @@ tags/
 /emacs.d/ac-comphist.dat
 /emacs.d/srecode-map.el
 emacs.d/backups/
+emacs.d/projectile.cache
 # other crud
 *.pyc
 *.swp
