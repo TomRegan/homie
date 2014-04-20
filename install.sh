@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-CWD=$(pwd)
-WHO=$(logname)
-
 init()
 {
     local hostname=$(hostname)

@@ -40,25 +40,8 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-# source environment
-CONFIG_DIR=~/Development/config
-CONFIG_FILES=(
-    "bash_aliases"
-    "perforce_settings"
-    "mac_settings"
-    "ruby_settings"
-    "java_settings"
-    "mvn_settings"
-    "git-completion"
-    "git-prompt"
-    "p4settings"
-    "pass-settings"
-    "ssh-settings"
-    "perforce_prompt"
-    "bash_settings"
-)
-for file in ${CONFIG_FILES[@]}; do
-    [ -f ${CONFIG_DIR}/${file} ] && source ${CONFIG_DIR}/${file}
+for file in .profile_settings/*; do
+    source $file
 done
 
 # search through local (homebrew) before system binaries
