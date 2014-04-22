@@ -23,6 +23,7 @@
     google-c-style
     google-this
     go-mode
+    helm
     ido-ubiquitous
     markdown-mode
     markdown-mode+

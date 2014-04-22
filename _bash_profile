@@ -40,15 +40,21 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-for file in .profile_settings/*; do
+for file in ~/.profile_settings/*; do
     source $file
 done
 
 # search through local (homebrew) before system binaries
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:${CONFIG_DIR}/utilities
 
+function __git_ps1_mod {
+  [[ $(__gitdir) != "" && $(git status --porcelain) != "" ]] && echo '^'
+}
+
 # set the prompt
-#PS1='$(__jobs)'
-PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:${COLOUR_YELLOW}"
+PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:"
+PS1+="${COLOUR_YELLOW}"
+PS1+='$(__git_ps1_mod)'
 PS1+='$(__git_ps1 "%s")'
-PS1+="${COLOUR_RESET}\$ "
+PS1+="${COLOUR_RESET}"
+PS1+='\$ '
