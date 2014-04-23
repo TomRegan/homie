@@ -9,6 +9,7 @@ _emacs.d/ac-comphist.dat
 _emacs.d/srecode-map.el
 _emacs.d/backups/
 _emacs.d/projectile.cache
+_emacs.d/helm-adaptive-history
 # other crud
 *.pyc
 *.swp
