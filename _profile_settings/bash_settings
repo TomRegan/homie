@@ -7,5 +7,6 @@ __jobs() {
 	}
 }
 
-VISUAL=emacs
-EDITOR=emacs
+export ALTERNATE_EDITOR=""
+export VISUAL=emacsclient
+export EDITOR=emacsclient

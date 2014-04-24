@@ -13,8 +13,8 @@
 (defvar packages
   '(ack-and-a-half
     ag
-    autopair
-    busybee-theme
+    auto-complete
+    auto-complete-clang
     color-theme-solarized
     flx-ido
     flycheck
@@ -29,9 +29,11 @@
     markdown-mode+
     magit
     projectile
-    rainbow-mode
+    rainbow-delimiters
     rust-mode
+    smartparens
     undo-tree
+    yasnippet
     zenburn-theme
 ))
 
