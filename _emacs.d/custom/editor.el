@@ -4,6 +4,16 @@
 
 ;;; Code:
 
+;; yasnippet
+(yas-global-mode 1)
+
+;; autocomplete
+(defun ac-cc-mode-setup ()
+  (setq ac-sources (append '(ac-source-clang ac-source-yasnippet) ac-sources))
+)
+(add-hook 'c-mode-common-hook 'ac-cc-mode-setup)
+(global-auto-complete-mode 1)
+
 ;; helm
 (helm-mode 1)
 (global-set-key (kbd "C-c h") 'helm-mini)

@@ -52,7 +52,7 @@ function __git_ps1_mod {
 }
 
 # set the prompt
-PS1="${COLOUR_GREEN}\u@\h${COLOUR_RESET}:\W:"
+PS1="${COLOUR_ORANGE}\u@\h${COLOUR_RESET}:\W:"
 PS1+="${COLOUR_YELLOW}"
 PS1+='$(__git_ps1_mod)'
 PS1+='$(__git_ps1 "%s")'
