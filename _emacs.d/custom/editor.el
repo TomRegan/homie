@@ -57,7 +57,13 @@
 
 ;; whitespace highlighting
 (require 'whitespace)
-(setq whitespace-style '(face tabs empty trailing lines-tail))
+(setq whitespace-style '(
+			 face
+			 empty
+			 trailing
+			 lines-tail
+			 space-before-tab
+			 ))
 (global-whitespace-mode 1)
 
 ;; ag

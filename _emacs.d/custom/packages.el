@@ -23,8 +23,10 @@
     google-c-style
     google-this
     go-mode
+    go-errcheck
+    go-snippets
     helm
-    ;;;helm-c-yasnippet
+    helm-c-yasnippet
     ido-ubiquitous
     markdown-mode
     markdown-mode+
