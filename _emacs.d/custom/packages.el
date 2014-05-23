@@ -18,6 +18,7 @@
     color-theme-solarized
     flx-ido
     flycheck
+    flycheck-pyflakes
     git-commit-mode
     git-rebase-mode
     google-c-style
