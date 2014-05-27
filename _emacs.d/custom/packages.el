@@ -28,7 +28,9 @@
     go-snippets
     helm
     helm-c-yasnippet
+    helm-flycheck
     ido-ubiquitous
+    java-snippets
     markdown-mode
     markdown-mode+
     magit
