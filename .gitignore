@@ -10,6 +10,8 @@ _emacs.d/srecode-map.el
 _emacs.d/backups/
 _emacs.d/projectile.cache
 _emacs.d/helm-adaptive-history
+# python crud
+.python-environments/
 # other crud
 *.pyc
 *.swp

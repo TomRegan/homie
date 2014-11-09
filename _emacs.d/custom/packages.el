@@ -31,10 +31,14 @@
     helm-flycheck
     ido-ubiquitous
     java-snippets
+    jedi
     markdown-mode
     markdown-mode+
     magit
+    nose
     projectile
+    python-environment
+    py-autopep8
     rainbow-delimiters
     rust-mode
     smartparens
@@ -46,7 +50,7 @@
 (defun packages-installed-p (packages)
   (if (not packages)
       t
-    (if (package-installed-p (car packages)) 
+    (if (package-installed-p (car packages))
 	(packages-installed-p (cdr packages))
       nil)))
 
