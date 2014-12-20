@@ -32,6 +32,7 @@
     ido-ubiquitous
     java-snippets
     jedi
+    jedi-direx
     markdown-mode
     markdown-mode+
     magit
@@ -41,6 +42,7 @@
     py-autopep8
     rainbow-delimiters
     rust-mode
+    slime
     smartparens
     undo-tree
     yasnippet

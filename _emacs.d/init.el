@@ -12,6 +12,7 @@
 (require 'editor)
 (require 'cmake-mode)
 (require 'custom-python)
+(require 'custom-lisp)
 (require 'backup)
 
 ;;; generated configuration begins here
