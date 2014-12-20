@@ -15,6 +15,7 @@
     ag
     auto-complete
     auto-complete-clang
+    autopair
     color-theme-solarized
     flx-ido
     flycheck

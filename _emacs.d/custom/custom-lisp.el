@@ -6,8 +6,7 @@
 
 ;;; configures the lisp environment
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
-(setq inferior-lisp-program "clisp")
-(setq slime-default-lisp 'clisp)
+(setq inferior-lisp-program "/usr/local/bin/clisp")
 
 (provide 'custom-lisp)
 ;;; custom-lisp ends here
