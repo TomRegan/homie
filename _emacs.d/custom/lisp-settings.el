@@ -8,5 +8,5 @@
 (load (expand-file-name "~/quicklisp/slime-helper.el"))
 (setq inferior-lisp-program "/usr/local/bin/clisp")
 
-(provide 'custom-lisp)
+(provide 'lisp-settings)
 ;;; custom-lisp ends here

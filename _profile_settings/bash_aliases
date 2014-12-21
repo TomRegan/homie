@@ -8,14 +8,13 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
+# ls
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
-alias vi=vim
-alias emacs="emacsclient -t"
-alias j=jobs
 alias ls='ls -G'
 alias ll='ls -al'
-which colordiff > /dev/null
-alias p4d="p4 diff -du | (( $? == 0 ? colordiff : cat   )) | more -R"
-alias cp='rsync -P'
+# job control
+alias j=jobs
+# editors
+alias vi=vim

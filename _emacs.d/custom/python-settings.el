@@ -13,5 +13,5 @@
   '(define-key python-mode-map "\C-cx" 'jedi-direx:pop-to-buffer))
 (add-hook 'jedi-mode-hook 'jedi-direx:setup)
 
-(provide 'custom-python)
+(provide 'python-settings)
 ;;; python.el ends here

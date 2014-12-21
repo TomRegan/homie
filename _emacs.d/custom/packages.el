@@ -13,6 +13,7 @@
 (defvar packages
   '(ack-and-a-half
     ag
+    ac-slime
     auto-complete
     auto-complete-clang
     autopair

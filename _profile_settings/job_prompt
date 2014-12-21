@@ -1,8 +1,0 @@
-_job_prompt()
-{
-	COLOUR_YELLOW="\033[00;33m"
-	COLOUR_RESET="\033[00m"
-	echo -n  "[${COLOUR_YELLOW}"
-	echo -n " $(jobs | awk '{ print $3 }') "
-	echo -n  "]${COLOUR_RESET}"
-}

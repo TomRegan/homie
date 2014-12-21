@@ -1,2 +1,0 @@
-# configure virtualenv wrapper
-export WORKON_HOME=$HOME/.virtualenvs
