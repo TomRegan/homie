@@ -13,20 +13,26 @@
 (defvar packages
   '(ack-and-a-half
     ag
+    ac-js2
+    ac-cider
     ac-slime
     auto-complete
     auto-complete-clang
     autopair
+    cider
     color-theme-solarized
     flx-ido
     flycheck
+    flycheck-clojure
     flycheck-pyflakes
     git-commit-mode
     git-rebase-mode
     google-c-style
     google-this
+    go-autocomplete
     go-mode
     go-errcheck
+    go-projectile
     go-snippets
     helm
     helm-c-yasnippet
@@ -35,6 +41,7 @@
     java-snippets
     jedi
     jedi-direx
+    js2-mode
     markdown-mode
     markdown-mode+
     magit
@@ -47,6 +54,7 @@
     slime
     smartparens
     undo-tree
+    writeroom-mode
     yasnippet
     zenburn-theme
 ))

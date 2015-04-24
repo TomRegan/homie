@@ -18,3 +18,4 @@ alias ll='ls -al'
 alias j=jobs
 # editors
 alias vi=vim
+alias emacs='emacsclient -t'
