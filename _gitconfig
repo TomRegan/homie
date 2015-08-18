@@ -2,7 +2,7 @@
 	name = Tom Regan
 	email = code.tom.regan@gmail.com
 [core]
-    editor = /usr/bin/vim
+	editor = emacs -q
 	excludesfile = /Users/tom/.gitignore_global
 	autocrlf = input
 [alias]
