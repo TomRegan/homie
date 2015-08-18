@@ -1,7 +1,1 @@
-# Dotfiles ftw
-
-* bash_profile
-* vimrc
-* terminal profile
-
-And my vim directory.
+# home-service -- A bunch of dotfiles
