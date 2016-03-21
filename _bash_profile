@@ -58,10 +58,3 @@ PS1+='$(__git_ps1_mod)'
 PS1+='$(__git_ps1 "%s")'
 PS1+="${COLOUR_RESET}"
 PS1+='\$ '
-
-source /Users/tom/.opam/opam-init/init.sh > /dev/null 2> /dev/null || true
-
-#THIS MUST BE AT THE END OF THE FILE FOR JENV TO WORK!!!
-[[ -s "/Users/tom/.jenv/bin/jenv-init.sh" ]] && source "/Users/tom/.jenv/bin/jenv-init.sh" && source "/Users/tom/.jenv/commands/completion.sh"
-
-
