@@ -15,3 +15,4 @@ _emacs.d/helm-adaptive-history
 # other crud
 *.pyc
 *.swp
+include/homebrew.bash

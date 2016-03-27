@@ -9,9 +9,10 @@ CCD=$([ -h ~/.bash_profile ] && {
     echo ~/
 })
 
+source $CCD/libexec/_functions
 # files in libexec provide functions for lazy loading
-for file in $CCD/libexec/*; do
-    source $file
+for file in $CCD/libexec/*.bash; do
+    load $file
 done
 
 include darwin
@@ -23,7 +24,6 @@ include go_path
 include java_home
 include man_path
 include completions/pass_completion
-
-export HOMEBREW_GITHUB_API_TOKEN=3d168fe8b4028c8442582bed0867fed077834b3e
+include homebrew
 
 unset CCD

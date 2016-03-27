@@ -12,3 +12,11 @@ function include {
         source $CCD/include/$fn.bash && return
     }
 }
+
+
+# takes a file path and creates a lazy function to load that file
+# the lazy function is unset after it is called
+function load {
+    local fn=$(basename ${1%.*})
+    eval "function $fn { $(cat $CCD/libexec/${fn}.bash); unset -f $fn; $fn \$@; }"
+}
