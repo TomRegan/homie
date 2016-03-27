@@ -1,1 +1,0 @@
-export MANPATH="$MANPATH:/usr/local/opt/erlang/lib/erlang/man"

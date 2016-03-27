@@ -1,0 +1,29 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+CCD=$([ -h ~/.bash_profile ] && {
+    _d=$(dirname $(readlink ~/.bash_profile))
+    [[ $_d =~ etc$ ]] && echo ${_d/\/etc/} || echo $_d
+} || {
+    # we're probably in serious trouble here, but let's try
+    echo ~/
+})
+
+# files in libexec provide functions for lazy loading
+for file in $CCD/libexec/*; do
+    source $file
+done
+
+include darwin
+include path
+include prompt
+include aliases
+include completions/git_completion
+include go_path
+include java_home
+include man_path
+include completions/pass_completion
+
+export HOMEBREW_GITHUB_API_TOKEN=3d168fe8b4028c8442582bed0867fed077834b3e
+
+unset CCD
