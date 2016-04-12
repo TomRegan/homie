@@ -1,6 +1,7 @@
 [user]
 	name = Tom Regan
-	email = code.tom.regan@gmail.com
+	email = tomregan@fastmail.fm
+	signingkey = DC8B2BFF
 [core]
 	editor = emacs -q
 	excludesfile = /Users/tom/.gitignore_global
@@ -34,3 +35,5 @@
 	trustExitCode = true
 [push]
 	default = simple
+[commit]
+	gpgsign = true

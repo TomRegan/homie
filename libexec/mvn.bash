@@ -9,6 +9,7 @@ $* | LANG=C sed -e 's/Tests run: \([^,]*\), Failures: \([^,]*\), Errors: \([^,]*
          -e 's/\(\[WARN\].*\)/[0;33m\1[0m/g' \
          -e 's/\(WARN.*\)/[0;33m\1[0m/g' \
          -e 's/\(\[ERROR\].*\)/[0;31m\1[0m/g' \
+         -e 's/\(\[FATAL\].*\)/[0;31m\1[0m/g' \
          -e 's/\(BUILD FAILURE.*\)/[0;31m\1[0m/g' \
          -e 's/\(FAILURE!.*\)/[0;31m\1[0m/g' \
          -e 's/\(BUILD SUCCESS.*\)/[0;37m\1[0m/g' \
