@@ -28,6 +28,7 @@
     wc = whatchanged --pretty=oneline
     rp = repack -a -d -f --depth=250 --window=250 --window-memory=1g
 	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	aliases = config
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path = 

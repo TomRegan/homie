@@ -15,15 +15,18 @@ for file in $CCD/libexec/*.bash; do
     load $file
 done
 
+include aliases
 include darwin
+include golang
+include homebrew
+include java
+include man_path
+include ocaml
 include path
 include prompt
-include aliases
-include completions/git_completion
-include go_path
-include java_home
-include man_path
+include python
+
 include completions/pass_completion
-include homebrew
+include completions/git_completion
 
 unset CCD
