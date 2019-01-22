@@ -26,6 +26,7 @@ include path
 include prompt
 include python
 
+include completions/diskutil_completion
 include completions/pass_completion
 include completions/git_completion
 
