@@ -20,14 +20,18 @@ include darwin
 include golang
 include homebrew
 include java
-include man_path
+#include man_path
 include ocaml
 include path
 include prompt
 include python
+include rust
+#include ranger
 
 include completions/diskutil_completion
-include completions/pass_completion
 include completions/git_completion
+include completions/pass_completion
+include completions/rust_completion
+
 
 unset CCD
