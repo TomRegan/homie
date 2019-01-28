@@ -9,11 +9,14 @@ CCD=$([ -h ~/.bash_profile ] && {
     echo ~/
 })
 
+
 source $CCD/libexec/_functions
 # files in libexec provide functions for lazy loading
 for file in $CCD/libexec/*.bash; do
     load $file
 done
+
+unset PATH
 
 include aliases
 include darwin

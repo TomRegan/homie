@@ -1,15 +1,15 @@
 files := $(wildcard etc/*)
 
-all: targets
+all: help
 
-.PHONY: build
-build:      # Create links in the user's home directory
+.PHONY: install
+install: ## create links in the user's home directory
 	$(foreach file,$(files),$(shell ln -s $(abspath $(file)) ~/.$(notdir $(file))))
 
 .PHONY: clean
-clean:      # Remove links from the user's home directory
+clean: ## remove links from the user's home directory
 	$(foreach file,$(files),$(shell unlink ~/.$(notdir $(file))))
 
-targets:    # Displays this help
-	@echo Targets:
-	@egrep '^[a-z]+:.*#.*' Makefile | sed 's/\(.*\):\(.*\)# \(.*\)/  \1\2\3/'
+.PHONY: help
+help: ## print this help
+	@awk 'BEGIN {FS = ":.*?## "} /^[a-zA-Z0-9_-]+:.*?## / {gsub("\\\\n",sprintf("\n%22c",""), $$2);printf "\033[36m%-10s\033[0m %s\n", $$1, $$2}' $(MAKEFILE_LIST)
