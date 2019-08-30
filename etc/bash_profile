@@ -35,6 +35,8 @@ include completions/diskutil_completion
 include completions/git_completion
 include completions/pass_completion
 include completions/rust_completion
+include completions/docker
+include completions/docker-machine
 
 
 unset CCD
