@@ -1,9 +1,9 @@
 [user]
 	name = Tom Regan
-	email = tomregan@fastmail.fm
-	signingkey = DC8B2BFF
+	email = tom.regan@worldpay.com
+	signingkey = 7281F5C0
 [core]
-	editor = emacs -q
+	editor = emacs -nwq
 	excludesfile = /Users/tom/.gitignore_global
 	autocrlf = input
 [alias]

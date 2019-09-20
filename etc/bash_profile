@@ -1,8 +1,8 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-CCD=$([ -h ~/.bash_profile ] && {
-    _d=$(dirname $(readlink ~/.bash_profile))
+CCD=$([ -h ~/.bashrc ] && {
+    _d=$(dirname $(readlink ~/.bashrc))
     [[ $_d =~ etc$ ]] && echo ${_d/\/etc/} || echo $_d
 } || {
     # we're probably in serious trouble here, but let's try
@@ -19,24 +19,24 @@ done
 unset PATH
 
 include aliases
-include darwin
-include golang
-include homebrew
-include java
+#include darwin
+#include golang
+#include homebrew
+#include java
 #include man_path
-include ocaml
+#include ocaml
 include path
 include prompt
-include python
-include rust
+#include python
+#include rust
 #include ranger
 
-include completions/diskutil_completion
+#include completions/diskutil_completion
 include completions/git_completion
-include completions/pass_completion
-include completions/rust_completion
-include completions/docker
-include completions/docker-machine
+#include completions/pass_completion
+#include completions/rust_completion
+#include completions/docker
+#include completions/docker-machine
 
 
 unset CCD
