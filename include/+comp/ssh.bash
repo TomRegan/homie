@@ -1,6 +1,9 @@
 #! /bin/bash
 
 function __ssh_completions {
+    if [ ! -f ~/.ssh/config ]; then
+        return;
+    fi
     # simple matcher to read values found in the Host configuration
     local hosts=$(sed \
                       --quiet \
