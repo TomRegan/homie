@@ -18,25 +18,26 @@ done
 
 unset PATH
 
-include aliases
-include darwin
-include golang
-include homebrew
-include java
-#include man_path
-include ocaml
 include path
 include prompt
-include python
-include rust
-#include ranger
+include aliases
 
-include completions/diskutil_completion
-include completions/git_completion
-include completions/pass_completion
-include completions/rust_completion
-include completions/docker
-include completions/docker-machine
+include +dist/darwin
+include +dist/homebrew
+
+include +lang/java
+include +lang/ocaml
+include +lang/python
+include +lang/rust
+include +lang/golang
+
+include +comp/diskutil
+include +comp/git
+include +comp/pass
+include +comp/rust
+include +comp/docker
+include +comp/docker-machine
+include +comp/ssh
 
 
 unset CCD
