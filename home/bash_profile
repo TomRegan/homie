@@ -3,7 +3,7 @@
 
 CCD=$([ -h ~/.bash_profile ] && {
     _d=$(dirname $(readlink ~/.bash_profile))
-    [[ $_d =~ etc$ ]] && echo ${_d/\/etc/} || echo $_d
+    [[ $_d =~ home$ ]] && echo ${_d%home} || echo $_d
 } || {
     # we're probably in serious trouble here, but let's try
     echo ~/
