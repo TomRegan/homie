@@ -1,8 +1,11 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-CCD=$([ -h ~/.bash_profile ] && {
+CCD=$([ -h ~/.bash_profile ] || [ -h ~/.bashrc ] && {
     _d=$(dirname $(readlink ~/.bash_profile))
+    if [ -z $_d ]; then
+      _d=$(dirname $(readlink ~/.bashrc))
+    fi
     [[ $_d =~ home$ ]] && echo ${_d%home} || echo $_d
 } || {
     # we're probably in serious trouble here, but let's try
