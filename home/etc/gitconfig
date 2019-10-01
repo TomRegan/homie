@@ -1,0 +1,41 @@
+[user]
+	name = Tom Regan
+	email = tom.regan@worldpay.com
+	signingkey = 7281F5C0
+[core]
+	editor = emacs -nwq
+	excludesfile = /Users/tom/.gitignore_global
+	autocrlf = input
+[alias]
+    br = branch
+    co = checkout
+    ci = commit -v -m
+    ca = commit --amend
+    cl = clone
+    df = diff --color
+    di = diff --cached --color
+    ds = diff --staged --color
+    ls = ls-files
+    li = ls-files --others --i --exclude-standard
+    ll = log --oneline --graph --decorate --color
+    lh = log --color --format='%h %an %ar - %s'
+    la = log --graph --decorate --color --all --date-order
+    lb = show-branch --color --all 
+    st = status -sb
+    sl = stash list
+    sa = stash apply
+    ss = stash save
+    wc = whatchanged --pretty=oneline
+    rp = repack -a -d -f --depth=250 --window=250 --window-memory=1g
+	ignore = "!gi() { curl -L -s https://www.gitignore.io/api/$@ ;}; gi"
+	aliases = config
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[push]
+	default = simple
+[commit]
+	gpgsign = true
