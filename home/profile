@@ -25,6 +25,7 @@ unset PATH
 include path
 include prompt
 include aliases
+include http_proxy
 
 include +lang/java
 include +lang/ocaml
