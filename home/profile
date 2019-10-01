@@ -1,0 +1,46 @@
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
+
+CCD=$([ -h ~/.bash_profile ] || [ -h ~/.bashrc ] && {
+    _d=$(dirname $(readlink ~/.bash_profile))
+    if [ -z $_d ]; then
+      _d=$(dirname $(readlink ~/.bashrc))
+    fi
+    [[ $_d =~ home$ ]] && echo ${_d%home} || echo $_d
+} || {
+    # we're probably in serious trouble here, but let's try
+    echo ~/
+})
+
+
+source $CCD/libexec/_functions
+# files in libexec provide functions for lazy loading
+for file in $CCD/libexec/*.bash; do
+    load $file
+done
+
+unset PATH
+
+include path
+include prompt
+include aliases
+
+include +dist/darwin
+include +dist/homebrew
+
+include +lang/java
+include +lang/ocaml
+include +lang/python
+include +lang/rust
+include +lang/golang
+
+include +comp/diskutil
+include +comp/git
+include +comp/pass
+include +comp/rust
+include +comp/docker
+include +comp/docker-machine
+include +comp/ssh
+
+
+unset CCD
