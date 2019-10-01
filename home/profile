@@ -2,9 +2,10 @@
 [ -z "$PS1" ] && return
 
 CCD=$([ -h ~/.bash_profile ] || [ -h ~/.bashrc ] && {
-    _d=$(dirname $(readlink ~/.bash_profile))
-    if [ -z $_d ]; then
-      _d=$(dirname $(readlink ~/.bashrc))
+    if [ -f ~/.bash_profile ]; then
+        _d=$(dirname $(readlink ~/.bash_profile))
+    else
+        _d=$(dirname $(readlink ~/.bashrc))
     fi
     [[ $_d =~ home$ ]] && echo ${_d%home} || echo $_d
 } || {
@@ -25,22 +26,15 @@ include path
 include prompt
 include aliases
 
-include +dist/darwin
-include +dist/homebrew
-
 include +lang/java
 include +lang/ocaml
-include +lang/python
 include +lang/rust
 include +lang/golang
 
-include +comp/diskutil
 include +comp/git
-include +comp/pass
 include +comp/rust
 include +comp/docker
 include +comp/docker-machine
 include +comp/ssh
-
 
 unset CCD
