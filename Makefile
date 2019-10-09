@@ -7,11 +7,11 @@ all: help
 .PHONY: install
 install: ## create links in the user's home directory
 	$(foreach file,$(filedir),$(shell ln -s $(abspath $(file)) ~/.$(notdir $(file))))
-	@mv ~/.profile ~/.$(profile)
+	@mv ~/.-profile ~/.$(profile)
 
 .PHONY: clean
 clean: ## remove links from the user's home directory
-	$(foreach file,$(filter-out home/profile,$(filedir)),$(shell unlink ~/.$(notdir $(file))))
+	$(foreach file,$(filter-out home/-profile,$(filedir)),$(shell unlink ~/.$(notdir $(file))))
 	@test -f ~/.$(profile) && unlink ~/.$(profile)
 
 .PHONY: depends
