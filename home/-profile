@@ -2,10 +2,9 @@
 [ -z "$PS1" ] && return
 
 CCD=$([ -h ~/.bash_profile ] || [ -h ~/.bashrc ] && {
-    if [ -f ~/.bash_profile ]; then
-        _d=$(dirname $(readlink ~/.bash_profile))
-    else
-        _d=$(dirname $(readlink ~/.bashrc))
+    _d=$(dirname $(readlink ~/.bash_profile))
+    if [ -z $_d ]; then
+      _d=$(dirname $(readlink ~/.bashrc))
     fi
     [[ $_d =~ home$ ]] && echo ${_d%home} || echo $_d
 } || {
