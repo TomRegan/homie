@@ -4,6 +4,10 @@ profile = $(if $(filter Linux,$(distrib)),bashrc,bash_profile)
 
 all: help
 
+.PHONY: test
+test:
+	foo=bar lib/mo
+
 .PHONY: install
 install: ## create links in the user's home directory
 	$(foreach file,$(filedir),$(shell ln -s $(abspath $(file)) ~/.$(notdir $(file))))

@@ -16,6 +16,9 @@ shopt -s cdspell
 ## automatically cd, eg on /etc<cr>
 #shopt -s autocd
 
+# disable xon/xoff to enable i-search
+stty -ixon
+
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
