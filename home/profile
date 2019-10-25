@@ -27,6 +27,8 @@ include prompt
 include aliases
 include http_proxy
 
+include +apps/wpg
+
 include +lang/java
 include +lang/ocaml
 include +lang/rust
@@ -37,5 +39,6 @@ include +comp/rust
 include +comp/docker
 include +comp/docker-machine
 include +comp/ssh
+include +comp/wpgctl
 
 unset CCD

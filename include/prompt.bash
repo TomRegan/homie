@@ -10,7 +10,12 @@ COLOUR_WHITE="\[\033[00;37m\]"
 COLOUR_ORANGE="\[\033[00;91m\]"
 
 function __git_ps1_mod {
-    [[ $(__gitdir) != "" && $(git status --porcelain) != "" ]] && echo '^'
+    if [ ! -z $(__gitdir) ] && [ $(__gitdir) != "" ]; then
+        $(git diff-index --quiet --ignore-submodules HEAD 2>&1 >/dev/null)
+        if  [ $? -gt 0 ]; then
+            echo '^'
+        fi
+    fi
 }
 
 PS1="${COLOUR_ORANGE}\u@\h${COLOUR_RESET}:\W:"
