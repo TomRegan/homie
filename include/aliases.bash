@@ -1,20 +1,26 @@
-# Enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(/usr/bin/dircolors -b ~/.dircolors)" || eval "$(/usr/bin/dircolors -b)"
-    alias ls='ls --color=auto'
-    #alias dir='dir --color=auto'
-    #alias vdir='vdir --color=auto'
+if [ `uname` = "Linux" ]
+then
+    LS_COLOR_DIRCOLOR=dircolors
+else
+    LS_COLOR_DIRCOLOR=gdircolors
+fi
+which $LS_COLOR_DIRCOLOR 2>&1 > /dev/null
+if [ $? = 0 ]; then
+    test -r ~/.dircolors && eval "$($LS_COLOR_DIRCOLOR -b ~/.dircolors)" || eval "$($LS_COLOR_DIRCOLOR -b)"
+    alias ls='ls -F --color=auto'
+    alias la='ls -A'
+    alias ll='ls -lF'
+    alias lla='ls -AlF'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
+else
+    alias ls='ls -GF'
+    alias la='ls -A'
+    alias ll='ls -lF'
+    alias lla='ls -AlF'
 fi
-# ls
-LS_OPTS="--color=yes"
-alias ll='ls ${LS_OPTS} -alF'
-alias la='ls ${LS_OPTS} -A'
-alias l='ls ${LS_OPTS} -CF'
-alias ls='ls ${LS_OPTS} -G'
-alias ll='ls ${LS_OPTS} -al'
+
 # job control
 alias j=jobs
 # editors

@@ -14,8 +14,7 @@ CCD=$([ -h ~/.bash_profile ] || [ -h ~/.bashrc ] && {
 })
 
 
-source $CCD/libexec/_functions
-# files in libexec provide functions for lazy loading
+source $CCD/lib/homie
 for file in $CCD/libexec/*.bash; do
     load $file
 done
@@ -26,11 +25,13 @@ include path
 include prompt
 include aliases
 include http_proxy
+include manpath
 
 include +apps/wpg
 
 include +lang/java
-include +lang/ocaml
+#include +lang/ocaml
+include +lang/python
 include +lang/rust
 include +lang/golang
 

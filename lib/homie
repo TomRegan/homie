@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#! /bin/bash
 
 function include {
     local fn=$1
@@ -19,4 +19,10 @@ function include {
 function load {
     local fn=$(basename ${1%.*})
     eval "function $fn { $(cat $CCD/libexec/${fn}.bash); unset -f $fn; $fn \$@; }"
+}
+
+function find_includes {
+    echo ${CCD:-.}
+    local includes=`find ${CCD:-.} -type f -path '*include*' ! -name '.*' ! -iname '*.md' | sort | sed -e 's/.\/\(.*\)\(\.bash\)/\1/' -e 's/\// /'`
+    INCLUDES=$includes ${CCD:-.}/lib/filter ${CCD:-.}/home/-profile
 }
