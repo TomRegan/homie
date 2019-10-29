@@ -41,5 +41,10 @@ include +comp/docker
 include +comp/docker-machine
 include +comp/ssh
 include +comp/wpgctl
+include +comp/azure
 
 unset CCD
+
+# Local Variables:
+# mode: shell-script
+# End:
