@@ -26,3 +26,23 @@ function find_includes {
     local includes=`find ${CCD:-.} -type f -path '*include*' ! -name '.*' ! -iname '*.md' | sort | sed -e 's/.\/\(.*\)\(\.bash\)/\1/' -e 's/\// /'`
     INCLUDES=$includes ${CCD:-.}/lib/filter ${CCD:-.}/home/-profile
 }
+
+function hash_code {
+    local _s="$1"
+    local -i h=0
+    for ((i = 0; i < ${#_s}; i++)); do
+
+        printf -v val "%d" "'${_s:$i:1}"
+
+        if ((31 * h + val > 2147483647))
+        then
+            h=$((-2147483648 + (31 * h + val) % 2147483648 ))
+        elif ((31 * h + val < -2147483648))
+        then
+            h=$(( 2147483648 - ( 31 * h + val) % 2147483648 )) 
+        else
+            h=$(( 31 * h + val))
+        fi
+    done
+    printf "%d" $h
+}

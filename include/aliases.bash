@@ -20,4 +20,4 @@ fi
 alias j=jobs
 # editors
 alias vi=vim
-
+alias emacs='emacs -nw'
