@@ -54,8 +54,16 @@ function __exitstatus {
 #PS1+='$(__exitstatus "$?")'
 #PS1+="\[${COLOR_RESET}\]"
 
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWCOLORHINTS=1
 
 PS1="\[${COLOR_LIGHT_GREEN}\]\u\[${COLOR_RESET}\]@"
 PS1+="\[${COLOR_LIGHT_GREEN}\]\h\[${COLOR_RESET}\] "
 PS1+="\[${COLOR_PURPLE}\]\W\[${COLOR_RESET}\] "
+PS1+="\[${COLOR_CYAN}\]"
+PS1+="\$(__git_ps1 \"%s \")"
+PS1+="\[${COLOR_RESET}\]"
 PS1+='% '

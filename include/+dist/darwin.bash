@@ -30,3 +30,5 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export BASH_SILENCE_DEPRECATION_WARNING=1
+
+include +comp/brew
