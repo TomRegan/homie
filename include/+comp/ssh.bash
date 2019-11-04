@@ -1,11 +1,21 @@
 #! /bin/bash
 
+if [ `uname` == 'Darwin' ]
+then
+    if [ -f /usr/local/bin/gsed ]
+    then
+	SED=/usr/local/bin/gsed
+    fi
+else
+    SED=`which sed`
+fi
+
 function __ssh_completions {
     if [ ! -f ~/.ssh/config ]; then
         return;
     fi
     # simple matcher to read values found in the Host configuration
-    local hosts=$(sed \
+    local hosts=$($SED \
                       --quiet \
                       --expression='s/^\s*[Hh]ost[^a-zA-Z]\s*=\?\s*\(.*\)\s*$/\1/p' \
                       ~/.ssh/config \
@@ -13,11 +23,11 @@ function __ssh_completions {
     # picks apart regular expressions found in Matches configuration
     # should fail gracefully, except where nested expansion is used,
     # in which case it will produce garbage completions
-    local matches=$(sed \
+    local matches=$($SED \
                         --quiet \
                         --expression="s/^\s*match\s*=.*^\\\(\(.*\)\\\)$'.*$/\1/p" \
                         ~/.ssh/config \
-                        | sed \
+                        | $SED \
                               --expression='s/\[\([0-9]\)\(\-\|,\)\([0-9]\)\]/{\1..\3}/g' \
                               --expression='s/\\|/ /g' \
                               --expression='s/\(\\(\|\\)\)//g')

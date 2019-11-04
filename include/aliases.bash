@@ -24,5 +24,5 @@ fi
 # job control
 alias j=jobs
 # editors
-#alias vi=vim
-#alias emacs='emacsclient -t'
+alias vi=vim
+alias emacs='emacs -nw'

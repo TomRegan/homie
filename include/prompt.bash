@@ -1,26 +1,69 @@
+include color
 include git_prompt
 
-COLOUR_RESET="\[\033[00m\]"
-COLOUR_RED="\[\033[00;31m\]"
-COLOUR_GREEN="\[\033[00;32m\]"
-COLOUR_YELLOW="\[\033[00;33m\]"
-COLOUR_MAGENTA="\[\033[00;35m\]"
-COLOUR_CYAN="\[\033[00;36m\]"
-COLOUR_WHITE="\[\033[00;37m\]"
-COLOUR_ORANGE="\[\033[00;91m\]"
-
-function __git_ps1_mod {
-    if [ ! -z $(__gitdir) ] && [ $(__gitdir) != "" ]; then
-        $(git diff-index --quiet --ignore-submodules HEAD 2>&1 >/dev/null)
-        if  [ $? -gt 0 ]; then
-            echo '^'
-        fi
-    fi
+function __timecheck {
+    export IPADDRESS_CHECK=`date -d "+1 min" +%s`
 }
 
-PS1="${COLOUR_ORANGE}\u@\h${COLOUR_RESET}:\W:"
-PS1+="${COLOUR_YELLOW}"
-PS1+='$(__git_ps1_mod)'
-PS1+='$(__git_ps1 "%s")'
-PS1+="${COLOUR_RESET}"
-PS1+='\$ '
+function __timestamp {
+    echo `date +%s`
+}
+
+function __ip_address {
+    local _ipaddress_time=`head -1 ~/.ipaddress`
+    if [ -z $_ipaddress_time ]
+    then
+	echo `dig +short myip.opendns.com @resolver1.opendns.com`:`date -d "+1 min" +%s` > ~/.ipaddress
+	local _ipaddress_time=`head -1 ~/.ipaddress`
+	if [ -z $_ipaddress_time ]
+	then
+	    echo ""
+	fi
+    fi
+    local _ipaddress=`cut -d: -f1 <(echo $_ipaddress_time)`
+    local _time=`cut -d: -f2 <(echo $_ipaddress_time)`
+    if [ $_time -gt `date +%s` ]
+    then
+	echo `dig +short myip.opendns.com @resolver1.opendns.com`:`date -d "+1 min" +%s` > ~/.ipaddress
+	local _ipaddress_time=`head -1 ~/.ipaddress`
+    fi
+    local _ipaddress=`cut -d: -f1 <(echo $_ipaddress_time)`
+    local _time=`cut -d: -f2 <(echo $_ipaddress_time)`
+    echo $_ipaddress
+
+}
+
+function __git_ps1_mod {
+    [[ $(__gitdir) != "" && $(git status --porcelain) != "" ]] && echo '+'
+}
+# PS1+="${COLOR_CYAN}"
+# PS1+='$(__git_ps1 "%s")'
+# PS1+='$(__git_ps1_mod)'
+# PS1+="${COLOR_RESET}"
+
+function __exitstatus {
+    local _code=$1
+    if [[ $_code == 0 ]]
+    then
+        echo ""
+    else
+        echo "!"
+    fi
+}
+#PS1+="\[${COLOR_RED}\]"
+#PS1+='$(__exitstatus "$?")'
+#PS1+="\[${COLOR_RESET}\]"
+
+GIT_PS1_SHOWDIRTYSTATE=1
+GIT_PS1_SHOWUNTRACKEDFILES=1
+GIT_PS1_SHOWUPSTREAM="auto"
+GIT_PS1_SHOWCOLORHINTS=1
+GIT_PS1_SHOWCOLORHINTS=1
+
+PS1="\[${COLOR_LIGHT_GREEN}\]\u\[${COLOR_RESET}\]@"
+PS1+="\[${COLOR_LIGHT_GREEN}\]\h\[${COLOR_RESET}\] "
+PS1+="\[${COLOR_YELLOW}\]\W\[${COLOR_RESET}\] "
+PS1+="\[${COLOR_CYAN}\]"
+PS1+="\$(__git_ps1 \"%s \")"
+PS1+="\[${COLOR_RESET}\]"
+PS1+='% '
